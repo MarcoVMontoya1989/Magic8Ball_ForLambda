@@ -1,7 +1,7 @@
 import { DynamoDBClient, GetItemCommand } from "@aws-sdk/client-dynamodb";
 
-const regionMontoya = process.env.DATABASE_REGION_MONTOYA;
-const tableNameMagic = process.env.TABLE_NAME_MONTOYA;
+const regionDynamoDB = process.env.DATABASE_REGION_ENVIRONMENT;
+const tableNameMagic = process.env.TABLE_NAME_ENVIRONMENT;
 
 let result = {
   statusCode: 200,
@@ -9,7 +9,7 @@ let result = {
 };
 
 export const handler = async (event) => {
-  const client = new DynamoDBClient({ region: regionMontoya });
+  const client = new DynamoDBClient({ region: regionDynamoDB });
 
   try {
     let randomNumber = Math.floor(Math.random() * 20);
